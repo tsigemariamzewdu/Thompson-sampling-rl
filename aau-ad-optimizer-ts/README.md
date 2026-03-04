@@ -95,3 +95,4 @@ pip install matplotlib
 - Ad 3 has the highest click rate, so Thompson Sampling should converge to selecting it most often.
 - Random seed is set in `ad-selector.metta` for reproducible runs.
 - To stress-test policy behavior, increase simulation iterations in `run` inside `ad-selector.metta`.
+- For comparison, see `../ad-optimizer-greedy/` which implements a pure greedy strategy that demonstrates the importance of exploration.
