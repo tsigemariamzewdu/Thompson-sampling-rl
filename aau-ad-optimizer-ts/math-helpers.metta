@@ -51,10 +51,6 @@
 ;; 2. Generate proposal sample W
 ;; 3. Accept/reject based on Beta PDF ratio
 ;; 4. Transform accepted W to [0,1] range
-;;
-;; Efficiency: 60-90% acceptance rate (typically only 1-2 tries needed)
-;; Reference: Cheng, R.C.H. (1978). Communications of the ACM, 21(4), 317-322
-;; ============================================================================
 
 ;; Main entry point: Sample from Beta(a, b) distribution
 ;; Input: a (successes), b (failures) - parameters of Beta distribution
@@ -108,13 +104,11 @@
         ($temp (log (/ $alpha (+ $b $w))))
         
         ;; Left side: log of acceptance ratio
-        ;; L = α×log(α/(b+W)) + γ×V - log(4)
-        ;; Comes from log[f(X)/(M×g(X))] where f=Beta PDF, g=proposal PDF, M=4
+        
         ($left (+ (* $alpha $temp) (* $gamma $v)))
         
         ;; Right side: log of random threshold
-        ;; R = log(4) + log(U₁²×U₂)
-        ;; The log(4) is the bounding constant, U₁² accounts for correlation
+      
         ($right (+ (log 4) (log (* (* $u1 $u1) $u2))))
     ) 
     ;; Step 5: Accept or reject
