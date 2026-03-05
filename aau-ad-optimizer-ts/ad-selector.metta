@@ -19,9 +19,26 @@
         ($reward (AdLoop  &rules))
         ($newCumReward (+ $cumReward $reward))
         ($_ (println! (METRIC reward $reward cumulative $newCumReward)))
+        ($_ (printAllSTV $iter &rules))
         ($_ (println! (--- After iteration $iter ---)))
     ) (run (- $iter 1) $newCumReward)
 )
+))
+
+;; Print all ads' STV values at current iteration
+(= (printAllSTV $iter $space) (
+    let* (
+        (($s1 $c1) (getSTV 1 $space))
+        (($s2 $c2) (getSTV 2 $space))
+        (($s3 $c3) (getSTV 3 $space))
+        (($s4 $c4) (getSTV 4 $space))
+        (($s5 $c5) (getSTV 5 $space))
+        ($_ (println! (ITERATION_STATE $iter 1 $s1 $c1)))
+        ($_ (println! (ITERATION_STATE $iter 2 $s2 $c2)))
+        ($_ (println! (ITERATION_STATE $iter 3 $s3 $c3)))
+        ($_ (println! (ITERATION_STATE $iter 4 $s4 $c4)))
+        ($_ (println! (ITERATION_STATE $iter 5 $s5 $c5)))
+    ) ()
 ))
 
 (= (AdLoop $ruleSpace) (

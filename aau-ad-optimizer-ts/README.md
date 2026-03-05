@@ -50,6 +50,7 @@ This naturally balances exploration and exploitation:
 - `math-helpers.metta` — random/math helpers and Beta sampling routine.
 - `stat/plot_cumulative_reward.py` — plots cumulative reward vs iteration.
 - `stat/plot_ad_selection_pie.py` — plots ad-selection frequency as a pie chart.
+- `stat/plot_distribution_evolution.py` — visualizes how Beta distributions evolve as the algorithm learns.
 
 ## How to Run
 From the repository root:
@@ -78,6 +79,13 @@ python3 aau-ad-optimizer-ts/stat/plot_ad_selection_pie.py \
   --no-show \
   --save aau-ad-optimizer-ts/stat/ad_selection_pie.png
 ```
+
+### 3) Beta distribution evolution (PNG)
+```bash
+python3 aau-ad-optimizer-ts/stat/plot_distribution_evolution.py
+```
+
+This shows how the Beta distributions for each ad evolve from initial uncertainty to learned beliefs, converging toward the true click rates.
 
 The pie chart highlights the most-selected ad by Thompson Sampling.
 
